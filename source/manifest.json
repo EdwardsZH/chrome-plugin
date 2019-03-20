@@ -1,0 +1,21 @@
+{
+  "name": "yjk-copy",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "你懂的",
+  "author": "edward",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "notifications",
+    "tabs",
+    "storage"
+  ]
+}
