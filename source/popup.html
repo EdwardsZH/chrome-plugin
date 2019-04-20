@@ -2,12 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Generate QR Code</title>
+  <title>Happy Copy</title>
   <link rel="stylesheet" href="src/css/style.css">
 </head>
-<body class="popup">
-  <div id="status">Loading...</div>
+<body>
+  <div id="content">
+    
+    <ul class="common">
+      <li class="common-item">
+        <span>获取平台: </span>
+        <span id="platform"></span>
+      </li>
+      <li class="common-item double-word">
+        <span>商品名称: </span>
+        <span id="productname"></span>
+      </li>
+    </ul>
 
+    <div class="bottom"> 
+      <p id="jd-data"></p>
+      <p id="tb-data"></p>
+    </div>
+  </div>
+
+  <script src="src/js/jquery-2.0.0.min.js"></script>
   <script src="src/js/copy.js"></script>
 </body>
 </html>

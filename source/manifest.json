@@ -13,9 +13,24 @@
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
+  "background": {
+    "scripts": [
+      "src/js/jquery-2.0.0.min.js", 
+      "src/js/background.js"
+    ]
+  },
   "permissions": [
+    "contextMenus", 
     "notifications",
+    "webRequest",
     "tabs",
     "storage"
-  ]
+  ],
+  "content_scripts":[{
+		"matches":["https://item.jd.com/*", "http://192.168.1.194:88/*"],
+		"js":[
+      "src/js/jquery-2.0.0.min.js", 
+      "src/js/content_script.js"
+    ]
+	}]
 }
