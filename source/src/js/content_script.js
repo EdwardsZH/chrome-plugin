@@ -3,32 +3,44 @@
 
 var dataList = []; 
 
-if(window.location.href.includes('https://item.jd.com')) {
-  var li = $("#detail .tab-main ul li:nth-child(5)")
+function getJDData(itemlist) {
+  for (let item of itemlist) {
+    var data = {}; 
+    var arr  = []
+    var imgs = item.children[1].children[2].children  // 评论图片	
 
+    data.evaluateContent = item.children[1].children[1].innerText  // 评论内容	
+    data.userName  = item.children[0].children[0].innerText               // 评论内容
+    data.userImage = item.children[0].children[0].children[0].currentSrc  // 用户头像	可选	String	
+    for (let i of imgs) {
+      arr.push(i.children[0].currentSrc)
+      data.evaluateImage = arr;
+    }
+   
+    dataList.push(data)
+  }
+  console.log(dataList)
+  // 给background.js发送msg
+  chrome.runtime.sendMessage(dataList);
+  dataList = [];
+}
+
+if(window.location.href.includes('https://item.jd.com')) {
+  var li = $("#detail .tab-main ul li:nth-child(5)");
+  
   li.click(function() {
     setTimeout( function() {
       var itemlist = $("#comment-0 .comment-item")
+      getJDData(itemlist);
 
-      for (let item of itemlist) {
-        var data = {}; 
-        var arr  = []
-        var imgs = item.children[1].children[2].children  // 评论图片	
-
-        data.evaluateContent = item.children[1].children[1].innerText  // 评论内容	
-        data.userName  = item.children[0].children[0].innerText               // 评论内容
-        data.userImage = item.children[0].children[0].children[0].currentSrc  // 用户头像	可选	String	
-        for (let i of imgs) {
-          arr.push(i.children[0].currentSrc)
-          data.evaluateImage = arr;
-        }
-       
-        dataList.push(data)
-      }
-      console.log(dataList)
-      // 给background.js发送msg
-      chrome.runtime.sendMessage(dataList);
-      dataList = [];
+      // var nextA = $("#comment-0 .com-table-footer .ui-page-wrap  .ui-page .ui-pager-next");
+      // nextA.click(function(){
+      //   setTimeout( function(){
+      //     var itemlist = $("#comment-0 .comment-item")
+      //     getJDData(itemlist);
+      //     console.log('被点击')
+      //   }, 1500);
+      // });
     }, 1500);
   });
 }
