@@ -26,7 +26,9 @@ function getJDData(itemlist) {
 }
 
 if(window.location.href.includes('https://item.jd.com')) {
-  var li = $("#detail .tab-main ul li:nth-child(5)");
+  var li;
+  li = $("#detail .tab-main ul li:nth-child(5)") 
+  if (!li.length) li = $(".detail .tab-main ul li").find("s").parent();
   
   li.click(function() {
     setTimeout( function() {
