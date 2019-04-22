@@ -47,7 +47,7 @@ if(window.location.href.includes('https://item.jd.com')) {
   });
 }
 
-if(window.location.href.includes('http://192.168.1.194:88')) {
+if(window.location.href.includes('http://127.0.0.1:8084')) {
   var port = chrome.extension.connect({name: "copy"});
   port.postMessage({question: "jd copy"});
 
