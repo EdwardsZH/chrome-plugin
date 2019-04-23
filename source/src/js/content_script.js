@@ -47,7 +47,10 @@ if(window.location.href.includes('https://item.jd.com')) {
   });
 }
 
-if(window.location.href.includes('http://127.0.0.1:8084')) {
+if (window.location.href.includes('http://127.0.0.1:8084')
+  || window.location.href.includes('http://192.168.1.194:88') 
+  || window.location.href.includes('http://mall.ihaozhuo.com')
+) {
   var port = chrome.extension.connect({name: "copy"});
   port.postMessage({question: "jd copy"});
 
