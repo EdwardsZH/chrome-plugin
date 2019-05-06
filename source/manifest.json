@@ -31,7 +31,8 @@
       "https://item.jd.com/*", 
       "http://127.0.0.1:8084/*", 
       "http://192.168.1.194:88/*",
-      "http://mall.ihaozhuo.com/*"
+      "http://mall.ihaozhuo.com/*",
+      "http://mall-gray.ihaozhuo.com/*"
     ],
 		"js":[
       "src/js/jquery-2.0.0.min.js", 
