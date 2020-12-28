@@ -27,8 +27,19 @@ function getJDData(itemlist) {
 
 if(window.location.href.includes('https://item.jd.com')) {
   var li;
-  li = $("#detail .tab-main ul li:nth-child(5)") 
-  if (!li.length) li = $(".detail .tab-main ul li").find("s").parent();
+  var domList = $("#detail .tab-main ul li")
+  // li = $("#detail .tab-main ul li:nth-child(5)") 
+  for(var i = domList.length-1; i>=0; i--){
+    if(domList[i].innerHTML.includes('商品评价')){
+      li = domList[i]
+    } else {
+      continue
+    }    
+  }
+
+  if (!li.length) {
+    li = $(".detail .tab-main ul li").find("s").parent();
+  }
   
   li.click(function() {
     setTimeout( function() {
@@ -49,7 +60,7 @@ if(window.location.href.includes('https://item.jd.com')) {
 
 if (window.location.href.includes('http://127.0.0.1:8084')
   || window.location.href.includes('http://192.168.1.194:88') 
-  || window.location.href.includes('http://mall.ihaozhuo.com')
+  || window.location.href.includes('mall.ihaozhuo.com')
   || window.location.href.includes('http://mall-gray.ihaozhuo.com')
 ) {
   var port = chrome.extension.connect({name: "copy"});
